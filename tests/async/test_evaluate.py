@@ -216,17 +216,17 @@ async def test_evaluate_evaluate_date(page: Page) -> None:
     result = await page.evaluate(
         '() => ({ date: new Date("2020-05-27T01:31:38.506Z") })'
     )
-    assert result == {"date": datetime.fromisoformat("2020-05-27T01:31:38.506")}
+    assert result == {"date": datetime.fromisoformat("2020-05-27T01:31:38.506Z")}
 
 
 async def test_evaluate_roundtrip_date(page: Page) -> None:
-    date = datetime.fromisoformat("2020-05-27T01:31:38.506")
+    date = datetime.fromisoformat("2020-05-27T01:31:38.506Z")
     result = await page.evaluate("date => date", date)
     assert result == date
 
 
 async def test_evaluate_jsonvalue_date(page: Page) -> None:
-    date = datetime.fromisoformat("2020-05-27T01:31:38.506")
+    date = datetime.fromisoformat("2020-05-27T01:31:38.506Z")
     result = await page.evaluate(
         '() => ({ date: new Date("2020-05-27T01:31:38.506Z") })'
     )

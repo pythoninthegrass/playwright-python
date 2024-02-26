@@ -205,7 +205,7 @@ def parse_value(value: Any, refs: Optional[Dict[int, Any]] = None) -> Any:
             return a
 
         if "d" in value:
-            return datetime.fromisoformat(value["d"][:-1])
+            return datetime.strptime(value["d"], "%Y-%m-%dT%H:%M:%S.%fZ")
 
         if "o" in value:
             o: Dict = {}
